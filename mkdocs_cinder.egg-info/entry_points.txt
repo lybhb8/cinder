@@ -1,0 +1,2 @@
+[mkdocs.themes]
+cinder = cinder

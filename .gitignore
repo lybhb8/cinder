@@ -1,8 +1,31 @@
-build
-dist
-mkdocs_cinder.egg-info/
-.vscode
-site/*
-cinder/__pycache__/*
+# Compiled Object files, Static and Dynamic libs (Shared Objects)
+*.o
+*.a
+*.so
+
+# Folders
+_obj
+_test
+.idea
+
+# Architecture specific extensions/prefixes
+*.[568vq]
+[568vq].out
+
+*.cgo1.go
+*.cgo2.c
+_cgo_defun.c
+_cgo_gotypes.go
+_cgo_export.*
+
+_testmain.go
+
+*.exe
 .DS_Store
-.venv
+the-way-to-go.sublime-project
+the-way-to-go.sublime-workspace
+
+*.pdf
+
+*.html
+*.htm

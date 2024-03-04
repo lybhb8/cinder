@@ -1,338 +1,131 @@
-<h1><i class="fas fa-fire" style="color:#FA023C"></i> Cinder Theme <small>for MkDocs</small></h1>
 
-## About
-
-Cinder is a clean, responsive theme for static documentation sites that are generated with [MkDocs](https://github.com/mkdocs/mkdocs). It's built on the [Bootstrap 3 framework](https://getbootstrap.com/docs/3.3/) and includes pre-packaged:
-
-<small><i class="fas fa-highlighter" style="color:#FA023C"></i> **[highlight.js v9.18.0](https://highlightjs.org/) syntax highlighting with support for [185 languages (over 30 by default) and over 90 styles](https://highlightjs.org/static/demo/)**</small></br>
-<small><i class="fab fa-font-awesome-alt" style="color:#FA023C"></i> **[FontAwesome v5.12.0](https://fortawesome.github.io/Font-Awesome/) icon support**</small></br>
-<small><i class="fas fa-font" style="color:#FA023C"></i> **[smashingly legible type scheme](./specimen#typography) to get your message out to your users**</small>
-
-You are viewing the theme in action and can see a selection of the theme elements on the [Specimen page](./specimen/).
-
-## Install
-
-**<em>Required</em>**: Python 3.4+
-
-### Install MkDocs & Create a New Project
-
-If you haven't installed MkDocs yet, use the following command to install it:
-
-<pre><code class="shell">$ pip install mkdocs</code></pre>
-
-Next, navigate to a clean directory and create a new MkDocs project with the following command:
-
-<pre><code class="shell">$ mkdocs new [projectname]</code></pre>
-
-Replace `[projectname]` with the name of your project (without the brackets).
-
-Then navigate to the root of your project directory:
-
-<pre><code class="shell">$ cd [projectname]</code></pre>
-
-### Install the Cinder Theme
-
-Download the Cinder theme archive by clicking the button below.
-
-<a href="https://github.com/chrissimpkins/cinder/archive/v1.2.0.zip"><button type="button" class="btn btn-success"><i class="fas fa-cloud-download-alt fa-3x"></i> </br>  <span style="font-size:20px;">Download Cinder</span></button></a>
-
-Unpack the contents of the archive into a directory named `cinder` at the top level of your MkDocs project directory.
-
-Your project directory should now look like this:
-
-<pre><code class="shell">.
-├── mkdocs.yml
-├── cinder
-│     ├── css
-│     ├── img
-│     ├── js
-│     ├── base.html
-│     ├── content.html
-│     ├── 404.html
-│     ├── nav-sub.html
-│     ├── nav.html
-│     └── toc.html
-└── docs
-      └── index.md
-</code></pre>
-
-MkDocs projects use a YAML settings file called `mkdocs.yml`.  This is located in the root of your project directory after you use the `mkdocs new` command.  Open the file in a text editor and modify it to include the `theme` settings as follows:
-
-<pre><code class="yaml">site_name: [YOURPROJECT]
-theme:
-  name: null
-  custom_dir: 'cinder'
-nav:
-  - Home: index.md</code></pre>
-
-See the [MkDocs documentation](https://www.mkdocs.org/user-guide/custom-themes/#creating-a-custom-theme) for additional details.
-
-<div class="bs-callout bs-callout-default">
-  <h4>Updates, the Manual Approach</h4>
-  If you choose the manual install approach, you can update your Cinder theme by downloading the new cinder.zip release archive and including it in your project. Then re-build your static site files (see instructions below).
-</div>
-
-## Test with a Local Site Server
-
-Use the following command to establish a local server for your site:
-
-<pre><code class="shell">$ mkdocs serve</code></pre>
-
-Then open your site in any browser at the URL `http://localhost:8000`.
-
-## Create Your Site
-
-### Add Content with Markdown Syntax
-
-Get to work on your site home page by opening the `docs/index.md` file and editing it in Markdown syntax.  The HTML automatically updates in the browser when you save the Markdown file if you use the MkDocs server (see command above).
-
-### Add New Pages
-
-Add new pages to your site by creating a new Markdown file in your `docs` directory, then linking to the new page in the `mkdocs.yml` file.  This uses a `Page Name : Markdown file` syntax.
-
-For example, to add an About page using a Markdown file that is located on the path `docs/about.md`, you would format the `mkdocs.yml` file as follows:
-
-<pre><code class="yaml">site_name: [YOURPROJECT]
-theme:
-  name: null
-  custom_dir: 'cinder'
-nav:
-  - Home: index.md
-  - About: about.md</code></pre>
-
-Add additional pages to your site by repeating the above series of steps.
-
-## Build Your Site
-
-Build your site files with the command:
-
-<pre><code class="shell">$ mkdocs build</code></pre>
-
-Your site files are built in the `site` directory and are ready to use.  Deploy the contents of the `site` directory to your web server.
-
-## Important Configuration Issues
-
-<div class="bs-callout bs-callout-warning">
-  <h4><i class="fas fa-exclamation-triangle"></i> Please review these issues before you push your site into a production setting!</h4>
-</div>
-
-### 1. Set the `site_url` configuration field
-You must set the `site_url` field in your `mkdocs.yml` file to the appropriate production URL in order to generate a valid `sitemap.xml` file ([issue #80](https://github.com/chrissimpkins/cinder/issues/80)).
-
-Here is an example from the [Cinder project `mkdocs.yml` file](https://github.com/chrissimpkins/cinder/blob/master/mkdocs.yml):
-
-```yml
-site_name: Cinder
-site_url: https://sourcefoundry.org/cinder/
-site_author: Christopher Simpkins
-site_description: "A clean, responsive theme for static documentation websites that are generated with MkDocs"
-repo_url: "https://github.com/chrissimpkins/cinder"
-copyright: "Cinder is licensed under the <a href='https://github.com/chrissimpkins/cinder/blob/master/LICENSE.md'>MIT license</a>"
-
-theme:
-  name: null
-  custom_dir: cinder
-  colorscheme: github
-  highlightjs: true
-  hljs_languages:
-    - yaml
-
-nav:
-  - Home: index.md
-  - Specimen: specimen.md
-
-markdown_extensions:
-  - admonition
-```
-
-The `sitemap.xml` file will be located at `[SITE_URL]/sitemap.xml` when you push your site into the production environment.  During development the `sitemap.xml` file can be found at `http://127.0.0.1:8000/sitemap.xml`.
-
-## Site Customization
-
-The following are a few common customizations that you might be interested in.  For much more detail about the configuration of your site, check out the [MkDocs Configuration documentation](https://github.com/mkdocs/mkdocs/blob/master/docs/user-guide/configuration.md).
-
-### Syntax Highlighting Color Scheme
-
-Cinder supports the [90+ highlightjs color schemes](https://highlightjs.org/static/demo/).  The `github` color scheme that you see on this page is the default and will be used if you do not specify otherwise.
-
-To change to a different scheme, include the `colorscheme` field under the `theme` field in your `mkdocs.yml` file and enter the color scheme name.  For example, to switch to the [Dracula theme](https://draculatheme.com/), enter the following:
-
-```yml
-theme:
-  name: null
-  custom_dir: cinder
-  colorscheme: dracula
-
-```
-
-and then rebuild your site.
-
-The color scheme name should match the base name of the highlightjs CSS file.  See the [`src/styles` directory of the highlightjs repository](https://github.com/highlightjs/highlight.js/tree/master/src/styles) for a complete list of these CSS paths.
-
-### Syntax Highlighting Language Support
-
-By default, Cinder supports the ~30 syntaxes listed under `common` in [the documentation](https://highlightjs.org/static/demo/).  You can broaden support to any of the over 130 highlightjs languages using definitions in your `mkdocs.yml` file.
-
-To add a new language, create a list of additional languages as a `hljs_languages` sub-field under the `theme` field in the `mkdocs.yml` file.  The definitions are formatted as a newline-delimited list with `-` characters.
-
-For example, to add support for the Julia and Perl languages, format your configuration file like this:
-
-```yml
-theme:
-  name: null
-  custom_dir: cinder
-  hljs_languages:
-      - julia
-      - perl
-```
-
-Use the base file name of the [JavaScript files located in the CDN](https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/languages/) for your syntax definitions.
-
-### Site Favicon
-
-Create an `img` subdirectory in your `docs` directory and add a custom favicon.ico file.  See the [MkDocs documentation](https://www.mkdocs.org/#changing-the-favicon-icon) for additional details.
-
-### Add Your Own CSS Stylesheets
-
-Create a `css` directory inside your `docs` directory and add your CSS files.  You can overwrite any of the Cinder styles in your CSS files.  Then include your CSS files in the `mkdocs.yml` file with the `extra_css` field:
-
-<pre><code class="yaml">site_name: [YOURPROJECT]
-theme: cinder
-extra_css:
-  - "css/mystyle.css"
-  - "css/myotherstyle.css"
-nav:
-  - Home: index.md
-  - About: about.md</code></pre>
-
-Your CSS styles fall at the end of the cascade and will override all styles included in the theme (including Bootstrap and default Cinder styles).  You can find the Cinder and Bootstrap CSS files on the paths `cinder/css/cinder.css` and `cinder/css/bootstrap.min.css`, respectively.
-
-
-### Add Your Own JavaScript
-
-Create a `js` directory inside your `docs` directory and add your JS files.  Then include your JS files in the `mkdocs.yml` file with the `extra_javascript` field:
-
-<pre><code class="yaml">site_name: [YOURPROJECT]
-theme: cinder
-extra_javascript:
-  - "js/myscript.js"
-  - "js/myotherscript.js"
-nav:
-  - Home: index.md
-  - About: about.md</code></pre>
-
-### Keyboard shortcuts
-
-Place the following in your `mkdocs.yml` file to enable keyboard shortcuts:
-
-```shell
-shortcuts:
-    help: 191    # ?
-    next: 39     # right arrow
-    previous: 37 # left arrow
-    search: 83   # s
-```
-
-The numbers correspond to the key that you would like to use for that shortcut. You can use [https://keycode.info/](https://keycode.info/) to find the keycode you want.
-
-### Extending Cinder
-
-Create a new directory within your project (e.g., `cinder-theme-ext/`) and create `main.html`. Add the following line at the top of the HTML file.
-
-```html
-{% extends "base.html" %}
-```
-
-Instead of using `theme_dir: cinder` in `mkdocs.yml`, use:
-
-<pre><code class="yaml">theme:
-    name: cinder
-    custom_dir: [custom dir]</code></pre>
-
-Refer to [MkDocs Documentation - Using the theme custom_dir](https://www.mkdocs.org/user-guide/styling-your-docs/#using-the-theme-custom_dir) for more information.
-
-Use the following examples as reference. You can put your own [Jinja2](http://jinja.pocoo.org/) within the blocks. More information can be found in [MkDocs Documentation - Overriding Template Blocks](https://www.mkdocs.org/user-guide/styling-your-docs/#overriding-template-blocks).
-
-#### Adding extra HTML to the head tag
-
-Append to `main.html`:
-
-```html
-{% block extrahead %}
-      <meta name="author" content="{{ page.meta.author }}">
-{% endblock %}
-```
-
-#### Replacing footer
-
-Append to `main.html`:
-
-```html
-{% block footer %}
-<hr>
-<p>{% if config.copyright %}
-      <small>{{ config.copyright }}<br></small>
-{% endif %}
-<small>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</small>
-{% if page.meta.revision_date %}
-      <small><br><i>Updated {{ page.meta.revision_date }}</i></small>
-{% endif %}
-</p>
-{% endblock %}
-```
-
-`page.meta.revision_date` can be set by using [meta-data (front-matter)](https://www.mkdocs.org/user-guide/writing-your-docs/#meta-data) at the beginning of your Markdown document or using [mkdocs-git-revision-date-plugin](https://github.com/zhaoterryy/mkdocs-git-revision-date-plugin).
-
-### Github or Bitbucket Repository Link
-
-Include the `repo_url` field and define it with your repository URL:
-
-<pre><code class="yaml">site_name: [YOURPROJECT]
-theme: cinder
-repo_url: "https://github.com/chrissimpkins/cinder"
-nav:
-  - Home: index.md
-  - About: about.md</code></pre>
-
-The link appears at the upper right hand corner of your site.
-
-### License Declaration and Link
-
-The Cinder theme displays your license declaration in the footer if you include a `copyright` field and define it with the text (and optionally the HTML link) that you would like to display:
-
-<pre><code class="yaml">site_name: [YOURPROJECT]
-theme: cinder
-copyright: "Cinder is licensed under the &lt;a href='https://github.com/chrissimpkins/cinder/blob/master/LICENSE.md'&gt;MIT license</a>"
-nav:
-  - Home: index.md
-  - About: about.md</code></pre>
-
-### Disabling Theme Features
-
-The Cinder theme can turn off some theme features entirely in `mkdocs.yml`, for situations where you don't need these features. If this is all the customization required, it saves overriding theme files. For example:
-
-```yml
-theme:
-  name: cinder
-  # Turn off Previous/Next navigation links in the navbar
-  disable_nav_previous_next: true
-  # Turn off Search in the navbar
-  disable_nav_search: true
-  # Turn off the site_name link in the navbar
-  disable_nav_site_name: true
-  # Turn off the footer entirely
-  disable_footer: true
-  # Turn off the default footer message, but display the page revision date if it's available
-  disable_footer_except_revision: true
-```
-
-## Issues
-
-If you have any issues with the theme, please report them on the Cinder repository:
-
-<a href="https://github.com/chrissimpkins/cinder/issues/new"><button class="btn btn-primary btn-lg" type="submit"><i class="fab fa-github fa-2x"></i> Report Issue</button></a>
-<a href="https://github.com/chrissimpkins/cinder/issues"><button class="btn btn-primary btn-lg" type="submit"> Active Issues <i class="fab fa-github fa-2x"></i></button></a>
-
-## License
-
-Cinder is licensed under the [MIT license](https://github.com/chrissimpkins/cinder/blob/master/LICENSE.md).
+- [前言](preface.md)
+- 第一部分：学习 Go 语言
+    - 第1章：Go 语言的起源，发展与普及
+        - 1.1 [起源与发展](01.1.md)
+	    - 1.2 [语言的主要特性与发展的环境和影响因素](01.2.md)
+    - 第2章：安装与运行环境
+	    - 2.1 [平台与架构](02.1.md)
+	    - 2.2 [Go 环境变量](02.2.md)
+	    - 2.3 [在 Linux 上安装 Go](02.3.md)
+	    - 2.4 [在 Mac OS X 上安装 Go](02.4.md)
+	    - 2.5 [在 Windows 上安装 Go](02.5.md)
+	    - 2.6 [安装目录清单](02.6.md)
+	    - 2.7 [Go 运行时（runtime）](02.7.md)
+	    - 2.8 [Go 解释器](02.8.md)
+    - 第3章：[编辑器、集成开发环境与其它工具](03.0.md)
+	    - 3.1 [Go 开发环境的基本要求](03.1.md)
+	    - 3.2 [编辑器和集成开发环境](03.2.md)
+	    - 3.3 [调试器](03.3.md)
+	    - 3.4 [构建并运行 Go 程序](03.4.md)
+	    - 3.5 [格式化代码](03.5.md)
+	    - 3.6 [生成代码文档](03.6.md)
+	    - 3.7 [其它工具](03.7.md)
+	    - 3.8 [Go 性能说明](03.8.md)
+	    - 3.9 [与其它语言进行交互](03.9.md)
+- 第二部分：语言的核心结构与技术
+    - 第4章：基本结构和基本数据类型
+	    - 4.1 [文件名、关键字与标识符](04.1.md)
+	    - 4.2 [Go 程序的基本结构和要素](04.2.md)
+	    - 4.3 [常量](04.3.md)
+	    - 4.4 [变量](04.4.md)
+	    - 4.5 [基本类型和运算符](04.5.md)
+	    - 4.6 [字符串](04.6.md)
+	    - 4.7 [strings 和 strconv 包](04.7.md)
+	    - 4.8 [时间和日期](04.8.md)
+	    - 4.9 [指针](04.9.md)
+    - 第5章：[控制结构](05.0.md)
+	    - 5.1 [if-else 结构](05.1.md)
+	    - 5.2 [测试多返回值函数的错误](05.2.md)
+	    - 5.3 [switch 结构](05.3.md)
+	    - 5.4 [for 结构](05.4.md)
+	    - 5.5 [Break 与 continue](05.5.md)
+	    - 5.6 [标签与 goto](05.6.md)
+    - 第6章：[函数（function）](06.0.md)
+	    - 6.1 [介绍](06.1.md)
+	    - 6.2 [函数参数与返回值](06.2.md)
+	    - 6.3 [传递变长参数](06.3.md)
+	    - 6.4 [defer 和追踪](06.4.md)
+	    - 6.5 [内置函数](06.5.md)
+	    - 6.6 [递归函数](06.6.md)
+	    - 6.7 [将函数作为参数](06.7.md)
+	    - 6.8 [闭包](06.8.md)
+	    - 6.9 [应用闭包：将函数作为返回值](06.9.md)
+	    - 6.10 [使用闭包调试](06.10.md)
+	    - 6.11 [计算函数执行时间](06.11.md)
+	    - 6.12 [通过内存缓存来提升性能](06.12.md)
+    - 第7章：[数组与切片](07.0.md)
+	    - 7.1 [声明和初始化](07.1.md)
+	    - 7.2 [切片](07.2.md)
+	    - 7.3 [For-range 结构](07.3.md)
+	    - 7.4 [切片重组（reslice）](07.4.md)
+	    - 7.5 [切片的复制与追加](07.5.md)
+		- 7.6 [字符串、数组和切片的应用](07.6.md)
+	- 第8章：[Map](08.0.md)
+		- 8.1 [声明、初始化和 make](08.1.md)
+		- 8.2 [测试键值对是否存在及删除元素](08.2.md)
+		- 8.3 [for-range 的配套用法](08.3.md)
+		- 8.4 [map 类型的切片](08.4.md)
+		- 8.5 [map 的排序](08.5.md)
+		- 8.6 [将 map 的键值对调](08.6.md)
+	- 第9章：[包（package）](09.0.md)
+		- 9.1 [标准库概述](09.1.md)
+		- 9.2 [regexp 包](09.2.md)
+		- 9.3 [锁和 sync 包](09.3.md)
+		- 9.4 [精密计算和 big 包](09.4.md)
+		- 9.5 [自定义包和可见性](09.5.md)
+		- 9.6 [为自定义包使用 godoc](09.6.md)
+		- 9.7 [使用 go install 安装自定义包](09.7.md)
+		- 9.8 [自定义包的目录结构、go install 和 go test](09.8.md)
+		- 9.9 [通过 Git 打包和安装](09.9.md)
+		- 9.10 [Go 的外部包和项目](09.10.md)
+		- 9.11 [在 Go 程序中使用外部库](09.11.md)
+	- 第10章：[结构（struct）与方法（method）](10.0.md)
+	    - 10.1 [结构体定义](10.1.md)
+	    - 10.2 [使用工厂方法创建结构体实例](10.2.md)
+	    - 10.3 [使用自定义包中的结构体](10.3.md)
+	    - 10.4 [带标签的结构体](10.4.md)
+	    - 10.5 [匿名字段和内嵌结构体](10.5.md)
+	    - 10.6 [方法](10.6.md)
+	    - 10.7 [类型的 String() 方法和格式化描述符](10.7.md)
+	    - 10.8 [垃圾回收和 SetFinalizer](10.8.md)
+	- 第11章：[接口（interface）与反射（reflection）](11.0.md)
+	    - 11.1 [接口是什么](11.1.md)
+	    - 11.2 [接口嵌套接口](11.2.md)
+	    - 11.3 [类型断言：如何检测和转换接口变量的类型](11.3.md)
+	    - 11.4 [类型判断：type-switch](11.4.md)
+	    - 11.5 [测试一个值是否实现了某个接口](11.5.md)
+	    - 11.6 [使用方法集与接口](11.6.md)
+	    - 11.7 [第一个例子：使用 Sorter 接口排序](11.7.md)
+	    - 11.8 [第二个例子：读和写](11.8.md)
+	    - 11.9 [空接口](11.9.md)
+        - 11.10 [反射包](11.10.md)
+        - 11.11 [Printf 和反射](11.11.md)
+        - 11.12 [接口与动态类型](11.12.md)
+        - 11.13 [总结：Go 中的面向对象](11.13.md)
+        - 11.14 [结构体、集合和高阶函数](11.14.md)
+- 第三部分：Go 高级编程
+    - 第12章：[读写数据](12.0.md)
+        - 12.1 [读取用户的输入](12.1.md)
+        - 12.2 [文件读写](12.2.md)
+        - 12.3 [文件拷贝](12.3.md)
+        - 12.4 [从命令行读取参数](12.4.md)
+        - 12.5 [用 buffer 读取文件](12.5.md)
+        - 12.6 [用切片读写文件](12.6.md)
+        - 12.7 [用 defer 关闭文件](12.7.md)
+        - 12.8 [使用接口的实际例子：fmt.Fprintf](12.8.md)
+        - 12.9 [格式化 JSON 数据](12.9.md)
+        - 12.10 [XML 数据格式](12.10.md)
+        - 12.11 [用 Gob 传输数据](12.11.md)
+        - 12.12 [Go 中的密码学](12.12.md)
+    - 第13章：[错误处理与测试](13.0.md)
+        - 13.1 [错误处理](13.1.md)
+        - 13.2 [运行时异常和 panic](13.2.md)
+        - 13.3 [从 panic 中恢复（Recover）](13.3.md)
+        - 13.4 [自定义包中的错误处理和 panicking](13.4.md)
+        - 13.5 [一种用闭包处理错误的模式](13.5.md)
+        - 13.6 [启动外部命令和程序](13.6.md)
+        - 13.7 [Go 中的单元测试和基准测试](13.7.md)
+        - 13.8 [测试的具体例子](13.8.md)
+        - 13.9 [用（测试数据）表驱动测试](13.9.md)
+        - 13.10 [性能调试：分析并优化 Go 程序](13.10.md)
