@@ -1,3 +1,4 @@
+
 《Go入门指南》
 ===================
 
@@ -30,7 +31,8 @@
 
 ## 致谢
 
-- 本书原作者：Ivo Balbaert
+- 本书原作者：Ivo Balbaert   中文翻译：unknwon
+- 中文翻译: [原件仓库](https://github.com/unknwon/the-way-to-go_ZH_CN)
 - 参与翻译人员：
 	- [@zhanming](https://github.com/zhanming)
 	- themorecolor
@@ -50,8 +52,12 @@
 
 ## 开始阅读
 
+
+
 - 您可以选择以下方式阅读本书：
-  - [GitHub在线](./eBook/preface.md)
+  - [GitHub在线](http://blowmoldingshare.cn/cinder/)
+
+
 
 想读书的人，不会找不到 [目录](eBook/directory.md) :)
 
