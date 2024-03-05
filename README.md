@@ -57,6 +57,6 @@ Go入门指南
 
 想读书的人，不会找不到,您可以选择以下方式阅读本书:
 
-   [Go入门指南](http://blowmoldingshare.cn/go-mkdocs-cinder/)
+[Go入门指南](http://blowmoldingshare.cn/go-mkdocs-cinder/ "Github pages部署，使用mkdocs-cinder主题")
 
 
