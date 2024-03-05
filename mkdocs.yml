@@ -87,7 +87,7 @@ extra:
     deprecated: Deprecated
   analytics:
     provider: google
-    property: !ENV GOOGLE_ANALYTICS_KEY
+    #property: !ENV GOOGLE_ANALYTICS_KEY
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/squidfunk
@@ -280,8 +280,8 @@ nav:
         - 12.10 XML 数据格式: 12.10.md 
         - 12.11 用 Gob 传输数据: 12.11.md 
         - 12.12 Go 中的密码学: 12.12.md 
-    - 第13章 错误处理与测试: 
-        - 13.0.md 
+    - 第13章 错误处理与测试:
+        - 13.0.md
         - 13.1 错误处理: 13.1.md 
         - 13.2 运行时异常和 panic: 13.2.md 
         - 13.3 从 panic 中恢复（Recover）: 13.3.md 
